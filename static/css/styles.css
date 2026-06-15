@@ -288,7 +288,7 @@ body {
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
-.btn-tweet {
+.btn-tweet, .btn-copy {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--color-text-primary);
@@ -297,7 +297,7 @@ body {
     border-radius: 6px;
 }
 
-.btn-tweet:hover {
+.btn-tweet:hover, .btn-copy:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--color-text-primary);
     color: var(--color-text-primary);
