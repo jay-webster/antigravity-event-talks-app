@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeCategory = 'all';
     let searchQuery = '';
     let selectedRelease = null;
+    let lastActiveElement = null;
 
     // DOM Elements
     const timelineContainer = document.getElementById('timeline-container');
@@ -375,6 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     function openTweetModal(item) {
         selectedRelease = item;
+        lastActiveElement = document.activeElement;
         
         // 1. Generate text snippet
         const maxDescLen = 160; // Leave room for prefix, link, and tags
@@ -405,6 +407,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeTweetModal() {
         tweetModal.classList.remove('open');
         selectedRelease = null;
+        if (lastActiveElement) {
+            lastActiveElement.focus();
+        }
     }
 
     function updateCharCounter() {
@@ -443,6 +448,50 @@ document.addEventListener('DOMContentLoaded', () => {
     tweetModal.addEventListener('click', (e) => {
         if (e.target === tweetModal) {
             closeTweetModal();
+        }
+    });
+
+    // Keyboard Shortcuts & Focus Trapping
+    document.addEventListener('keydown', (e) => {
+        // 1. Escape key to close modal
+        if (e.key === 'Escape' && tweetModal.classList.contains('open')) {
+            closeTweetModal();
+        }
+
+        // 2. '/' key to focus search input
+        const activeEl = document.activeElement;
+        const isEditing = activeEl && (
+            activeEl.tagName === 'INPUT' || 
+            activeEl.tagName === 'TEXTAREA' || 
+            activeEl.isContentEditable
+        );
+        if (e.key === '/' && !isEditing) {
+            e.preventDefault();
+            searchInput.focus();
+            searchInput.select();
+        }
+    });
+
+    // Modal Focus trapping
+    tweetModal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            const focusables = tweetModal.querySelectorAll('button:not([disabled]), textarea:not([disabled])');
+            if (focusables.length === 0) return;
+
+            const firstEl = focusables[0];
+            const lastEl = focusables[focusables.length - 1];
+
+            if (e.shiftKey) { // Shift + Tab
+                if (document.activeElement === firstEl) {
+                    lastEl.focus();
+                    e.preventDefault();
+                }
+            } else { // Tab
+                if (document.activeElement === lastEl) {
+                    firstEl.focus();
+                    e.preventDefault();
+                }
+            }
         }
     });
 
