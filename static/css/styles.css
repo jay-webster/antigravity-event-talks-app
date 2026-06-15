@@ -1105,3 +1105,160 @@ body {
         top: 1.2rem;
     }
 }
+
+/* ==========================================================================
+   Light Theme Overrides
+   ========================================================================== */
+body.light-theme {
+    /* Sleek Light Palette variables */
+    --color-bg-deep: #f8fafc;
+    --color-bg-main: #f1f5f9;
+    --color-bg-card: rgba(255, 255, 255, 0.7);
+    --color-bg-card-hover: rgba(255, 255, 255, 0.9);
+    --color-border: rgba(15, 23, 42, 0.08);
+    --color-border-hover: rgba(15, 23, 42, 0.16);
+    
+    /* Text Colors */
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748b;
+
+    /* Twitter / X brand override in light mode */
+    --color-twitter: #0f1419;
+    --color-twitter-hover: #272c30;
+    --color-twitter-bg: rgba(15, 20, 25, 0.08);
+    
+    --shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 10px 30px -5px rgba(15, 23, 42, 0.12);
+}
+
+/* Light Theme element adjustments */
+body.light-theme .glow-orb {
+    opacity: 0.08; /* Soften background glow orbs for light mode */
+}
+
+body.light-theme .search-box input {
+    background: rgba(255, 255, 255, 0.85);
+    color: #0f172a;
+}
+
+body.light-theme .search-box input:focus {
+    background: #ffffff;
+}
+
+body.light-theme .stat-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(15, 23, 42, 0.06);
+}
+
+body.light-theme .timeline-container::before {
+    background: linear-gradient(180deg, 
+        rgba(56, 189, 248, 0.6) 0%, 
+        rgba(129, 140, 248, 0.4) 50%, 
+        rgba(15, 23, 42, 0.05) 100%
+    );
+}
+
+body.light-theme .timeline-node {
+    background: #f8fafc;
+    box-shadow: 0 0 0 3px #f8fafc;
+}
+
+/* Modal adjustments in light theme */
+body.light-theme .modal-container {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .modal-header {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+    color: #0f172a;
+}
+
+body.light-theme .modal-instructions {
+    color: #475569;
+}
+
+body.light-theme .twitter-preview-card {
+    background: #ffffff;
+    border-color: #e1e8ed;
+}
+
+body.light-theme .twitter-display-name {
+    color: #0f1419;
+}
+
+body.light-theme .twitter-username {
+    color: #536471;
+}
+
+body.light-theme .tweet-textarea {
+    color: #0f1419;
+}
+
+body.light-theme .twitter-preview-link-card {
+    background: #ffffff;
+    border-color: #e1e8ed;
+}
+
+body.light-theme .link-card-title {
+    color: #0f1419;
+}
+
+body.light-theme .link-card-desc, body.light-theme .link-card-domain {
+    color: #536471;
+}
+
+body.light-theme .modal-footer {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .progress-ring-bg {
+    stroke: rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .char-count {
+    color: #475569;
+}
+
+body.light-theme .skeleton-card {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+body.light-theme .skeleton-badge,
+body.light-theme .skeleton-date,
+body.light-theme .skeleton-line,
+body.light-theme .skeleton-footer {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .skeleton-card::after {
+    background: linear-gradient(90deg, 
+        rgba(0, 0, 0, 0) 0%, 
+        rgba(0, 0, 0, 0.02) 20%, 
+        rgba(0, 0, 0, 0.04) 60%, 
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+body.light-theme .card-body code {
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    color: #db2777;
+}
+
+/* Toggle icon display settings */
+body.dark-theme .moon-icon {
+    display: none;
+}
+body.dark-theme .sun-icon {
+    display: block;
+}
+body.light-theme .moon-icon {
+    display: block;
+}
+body.light-theme .sun-icon {
+    display: none;
+}

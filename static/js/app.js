@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Load Saved Theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+    } else {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+    }
+
     // State Variables
     let allReleases = [];
     let activeCategory = 'all';
@@ -12,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const refreshBtn = document.getElementById('refresh-btn');
     const refreshIcon = refreshBtn.querySelector('.spinner-icon');
     const exportCsvBtn = document.getElementById('export-csv-btn');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const syncStatus = document.getElementById('sync-status');
     const syncStatusText = syncStatus.querySelector('.status-text');
     const syncStatusDot = syncStatus.querySelector('.status-dot');
@@ -269,6 +280,18 @@ document.addEventListener('DOMContentLoaded', () => {
             activeCategory = chip.getAttribute('data-category');
             renderTimeline();
         });
+    });
+
+    themeToggleBtn.addEventListener('click', () => {
+        if (document.body.classList.contains('dark-theme')) {
+            document.body.classList.remove('dark-theme');
+            document.body.classList.add('light-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.body.classList.remove('light-theme');
+            document.body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+        }
     });
 
     refreshBtn.addEventListener('click', () => {
